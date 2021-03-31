@@ -15,13 +15,18 @@ int main() {
         reverse(t[i].begin(), t[i].end());
     }
 
-    bool test = false;
-    for (int i = 0; i < s.size(); i++) {
+    bool test = true;
+    for (int i = 0; i < s.size();) {
+        bool test2 = false;
         for (int j = 0; j < 4; j++) {
-            if (s.substr(0, t[j].size()) == t[j]) {
-                test = true;
+            if (s.substr(i, t[j].size()) == t[j]) {
+                test2 = true;
                 i += t[j].size();
             }
+        }
+        if (!test2){
+            test = false;
+            break;
         }
     }
 
