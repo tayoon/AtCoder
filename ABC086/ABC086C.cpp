@@ -4,7 +4,7 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    int  t[n], x[n], y[n];
+    int  t[n+1], x[n+1], y[n+1];
 
     t[0] = x[0] = y[0] = 0;
 
