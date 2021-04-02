@@ -8,8 +8,9 @@ int main() {
     int t, a;
     cin >> t >> a;
 
-    int h[n], diff, res;
-    int min = INT_MAX;
+    int h[n], res;
+    double diff;
+    double min = INT_MAX;
     for (int i = 0; i < n; i++) {
         cin >> h[i];
         diff = abs(a - (t-h[i]*0.006));
