@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
@@ -9,7 +9,7 @@ int main() {
         cin >> a[i];
     }
 
-    int sum = 0, res1 = 0, res2 = 0;
+    long long sum = 0, res1 = 0, res2 = 0;
     for (int i = 0; i < n; i++) {
         sum += a[i];
         if (i%2 == 0 && sum <= 0) {
