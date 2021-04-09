@@ -29,8 +29,11 @@ int main() {
     if (n % test > 0) {
         res = n / test + sumDigit(n%test);
     } else if (n % test == 0) {
-        // res = sumDigit(n/2) * 2;
-        res = sumDigit(test) + sumDigit(n-test);
+        if ((n / test) % 2 == 0 || (n / test) == 1) {
+            res = sumDigit(n/2) * 2;
+        } else {
+            res = sumDigit(test) + sumDigit(n-test);
+        }
     }
 
     cout << res << endl;
