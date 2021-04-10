@@ -34,7 +34,7 @@ int main() {
     int min = INT_MAX;
     for (int i = 0; i < num; i++) {
         long anoth = n / data[i];
-        cout << data[i] << ":" << anoth << endl;
+        cout << "i:" << i << " " << data[i] << ":" << anoth << endl;
         
         int res = Compare(data[i], anoth);
         if (res < min) {
