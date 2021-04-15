@@ -14,16 +14,15 @@ int main() {
             for (int j = 1; j < n; j++) {
                 if (s[j] == 'E') cnt[i]++;
             }
-        } else if (i == 4) {
+        } else if (i == n-1) {
             for (int j = 0; j < n-1; j++) {
                 if (s[j] == 'W') cnt[i]++;
             }
         } else {
-            for (int j = 0; j < i; j++) {
-                if (s[j] == 'W') cnt[i]++;
-            }
-            for (int k = i+1; k < n; k++) {
-                if (s[k] == 'E') cnt[i]++;
+            for (int j = 0; j < n; j++) {
+                if (j < i && s[j] == 'W') cnt[i]++;
+                else if (j > i && s[j] == 'E') cnt[i]++;
+                else if (j == i) continue;
             }
         }
     }
