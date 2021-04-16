@@ -9,23 +9,24 @@ int main() {
     cin >> s;
 
     int cnt[n] = {};
-    for (int i = 0; i < n; i++) {
-        if (i == 0) {
-            for (int j = 1; j < n; j++) {
-                if (s[j] == 'E') cnt[i]++;
-            }
-        } else if (i == n-1) {
-            for (int j = 0; j < n-1; j++) {
-                if (s[j] == 'W') cnt[i]++;
-            }
+    for (int i = 1; i < n; i++) {
+        if (s[i] == 'E') cnt[0]++;
+    }
+
+    for (int i = 1; i < n; i++) {
+        if (s[i-1] == 'E' && s[i] == 'E') {
+            cnt[i] = cnt[i-1] - 1;
+        } else if (s[i-1] == 'W' && s[i] == 'W') {
+            cnt[i] = cnt[i-1] + 1;
         } else {
-            for (int j = 0; j < n; j++) {
-                if (j < i && s[j] == 'W') cnt[i]++;
-                else if (j > i && s[j] == 'E') cnt[i]++;
-                else if (j == i) continue;
-            }
+            cnt[i] = cnt[i-1];
         }
     }
 
-    cout << *min_element(cnt, cnt + n) << endl;
+    int res = INT_MAX;
+    for (int i = 0; i < n; i++) {
+        res = min(res, cnt[i]);
+    }
+
+    cout << res << endl;
 }
