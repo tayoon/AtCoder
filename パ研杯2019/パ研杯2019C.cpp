@@ -12,10 +12,10 @@ int main() {
         }
     }
 
-    int res = 0;
-    for (int i = 0; i < m; i++) {
+    long long res = 0;
+    for (int i = 0; i < m-1; i++) {
         for (int j = i+1; j < m; j++) {
-            int cnt = 0;
+            long long cnt = 0;
             for (int k = 0; k < n; k++) {
                 cnt += max(a[k][i], a[k][j]);
             }
