@@ -11,10 +11,15 @@ int main() {
     for (int i = 0; i < n+1; i++) cin >> a[i];
     for (int i = 0; i < n; i++) cin >> b[i];
 
-    int next = 0, cnt = 0;
+    long long next = 0, cnt = 0;
     for (int i = 0; i < n+1; i++) {
-        a[i] -= next;
-        cnt += next;
+        if (a[i] >= next) {
+            a[i] -= next;
+            cnt += next;
+        } else {
+            cnt += a[i];
+            a[i] = 0;
+        }
         next = 0;
         if (a[i] >= b[i]) {
             cnt += b[i];
