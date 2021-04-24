@@ -6,20 +6,30 @@ int main() {
     string s;
     cin >> n >> s >> q;
 
-    vector<int> t(q);
-    vector<int> a(q);
-    vector<int> b(q);
+    int t, a, b;
     char tmp;
+    bool flag = false;
+
     for (int i = 0; i < q; i++) {
-        cin >> t[i] >> a[i] >> b[i];
-        if (t[i] == 1) {
-            tmp = s[a[i]-1];
-            s[a[i]-1] = s[b[i]-1];
-            s[b[i]-1] = tmp;
+        cin >> t >> a >> b;
+        --a, --b;
+        if (t == 1) {
+            if (flag) {
+                if (a >= n) a -= n;
+                else a += n;
+
+                if (b >= n) b -= n;
+                else b += n;
+            }
+            tmp = s[a];
+            s[a] = s[b];
+            s[b] = tmp;
         } else {
-            s = s.substr(n) + s.substr(0, n);
+            flag = !flag;
         }
     }
+
+    if (flag) s = s.substr(n) + s.substr(0, n);
 
     cout << s << endl;
 }
