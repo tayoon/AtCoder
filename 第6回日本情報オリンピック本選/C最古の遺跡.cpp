@@ -13,7 +13,7 @@ int main() {
         map[y[i]][x[i]] = true;
     }
 
-    int res = 0;
+    int res = 0, maxi = INT_MIN;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (i == j) continue;
@@ -21,13 +21,15 @@ int main() {
             int dx = x[j] - x[i];
             int dy = y[j] - y[i];
 
-            if (y[i]-dx < 0 || x[i]+dy > 5000 || y[j]-dx < 0 || x[j]+dy > 5000) continue;
+            if (y[i]-dx < 0 || x[i]+dy < 0 || y[j]-dx < 0 || x[j]+dy < 0) continue;
+            if (y[i]-dx > 5000 || x[i]+dy > 5000 || y[j]-dx > 5000 || x[j]+dy > 5000) continue;
 
             if (map[y[i]-dx][x[i]+dy] && map[y[j]-dx][x[j]+dy]) {
-                res = max(res, dx*dx + dy*dy);
+                res = dx * dx + dy * dy;
             }
+            maxi = max(maxi, res);
         }
     }
 
-    cout << res << endl;
+    cout << maxi << endl;
 }
