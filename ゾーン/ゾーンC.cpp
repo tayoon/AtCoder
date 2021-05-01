@@ -10,13 +10,22 @@ int main() {
         cin >> a[i] >> b[i] >> c[i] >> d[i] >> e[i];
     }
 
-    int ans = *max_element(a.begin(), a.end());
     int res = INT_MAX;
-    if (res > *max_element(a.begin(), a.end())) res = *max_element(a.begin(), a.end());
-    if (res > *max_element(b.begin(), b.end())) res = *max_element(b.begin(), b.end());
-    if (res > *max_element(c.begin(), c.end())) res = *max_element(c.begin(), c.end());
-    if (res > *max_element(d.begin(), d.end())) res = *max_element(d.begin(), d.end());
-    if (res > *max_element(e.begin(), e.end())) res = *max_element(e.begin(), e.end());
+    int ans = INT_MIN;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i == j) continue;
+            for (int k = 0; k < n; k++) {
+                if (i == k || j == k) continue;
+                res = min(res, max({a[i], a[j], a[k]}));
+                res = min(res, max({b[i], b[j], b[k]}));
+                res = min(res, max({c[i], c[j], c[k]}));
+                res = min(res, max({d[i], d[j], d[k]}));
+                res = min(res, max({e[i], e[j], e[k]}));
+                ans = max(ans, res);
+            }
+        }
+    }
 
-    cout << res << endl;
+    cout << ans << endl;
 }
