@@ -2,21 +2,32 @@
 using namespace std;
 
 int main() {
-    string s, t = "";
+    string s, t;
     cin >> s;
+
+    bool flag = false;
+    vector<char> res;
 
     for (int i = 0; i < s.length(); i++) {
         if (s[i] == 'R') {
-            reverse(t.begin(), t.end());
+            flag = !flag;
+            continue;
+        }
+
+        if (!flag) {
+            res.push_back(s[i]);
         } else {
-            t += s[i];
+            res.insert(res.begin(), s[i]);
         }
     }
 
-    for (int i = 0; i < t.length(); i++) {
-        if (t[i] == t[i+1]) {
-            t.erase(i, 2);
-            i -= 2;
+    if (flag) reverse(res.begin(), res.end());
+
+    for (char c : res) {
+        if (t.size() != 0 && t.back() == c) {
+            t.pop_back();
+        } else {
+            t += c;
         }
     }
 
